@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia dos Namorados - Harley & Julia</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #e6f0ff;
+            overflow-x: hidden;
+        }
+
+        #startScreen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #b3ccff;
+            text-align: center;
+        }
+
+        #mainContent {
+            display: none;
+        }
+
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: #3399ff;
+            transform: rotate(45deg);
+            top: -10px;
+            animation: fall 5s linear infinite;
+            z-index: 1000;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #3399ff;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(45deg);
+            }
+        }
+
+        header {
+            background-color: #3366cc;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        header img {
+            width: 50px;
+        }
+
+        .spotify-box {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .carousel-slide {
+            display: none;
+        }
+
+        .carousel-slide img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .counter {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+            color: #003366;
+        }
+
+        .declaration {
+            padding: 20px;
+            font-size: 18px;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            color: #003366;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #3366cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #003399;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="startScreen">
+        <h1>Feliz Dia dos Namorados ❤️</h1>
+        <button onclick="startSite()">Começar</button>
+    </div>
+
+    <div id="mainContent">
+        <header>
+            <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Heart">
+        </header>
+
+        <div class="spotify-box">
+            <h2>Sua música especial aqui</h2>
+            <!-- Player de áudio HTML5 -->
+            <audio controls autoplay loop>
+                <source src="/src/audio/Outra Vida.mp3" type="audio/mpeg">
+                Seu navegador não suporta áudio.
+            </audio>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="/src/img/foto1.jpeg" alt="Foto 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="/src/img/foto2.jpeg" alt="Foto 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="/src/img/foto3.jpeg" alt="Foto 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="/src/img/foto4.jpeg" alt="Foto 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="/src/img/foto5.jpeg" alt="Foto 5">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <div class="counter">
+            Eu te amo há:<br>
+            <span id="days">0</span> dias
+            <span id="hours">0</span> horas
+            <span id="minutes">0</span> minutos
+            <span id="seconds">0</span> segundos 😍
+        </div>
+
+        <div class="declaration">
+            <p>Desde o primeiro dia em que a gente se beijou, eu não tirei você da cabeça. Eu lembro que no começo
+                ficava dizendo que não me apaixonava fácil, mas também lembro claramente de ficar escutando Pelé
+                Milflows e pensando em você — eu só não queria dar o braço a torcer. <br>
+
+                Hoje em dia, eu não consigo me imaginar sem você na minha vida. Na minha cabeça, já tenho minha vida
+                toda planejada com você. Quero casar com você, quero ter muitos filhos com você — esse com certeza é o
+                meu maior sonho. <br>
+
+                Você é o grande amor da minha vida. Eu te amo muito e quero estar com você para sempre. Estou morrendo
+                de saudades de tudo: do seu cheirinho, do seu toque, do seu olhar, dos seus beijos… de tudo que compõe o
+                nosso relacionamento. Volta pra mim logo, minha Julinha. ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        function startSite() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            createHearts();
+            startRealTimeCounter();
+            showSlides(slideIndex);
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }, 300);
+        }
+
+        function startRealTimeCounter() {
+            const startDate = new Date(2024, 9, 9, 0, 0, 0); // Outubro = 9
+
+            function updateCounter() {
+                const now = new Date();
+                const diff = now - startDate;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+
+            updateCounter();
+            setInterval(updateCounter, 1000);
+        }
+
+        // Carrossel
+        let slideIndex = 1;
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
